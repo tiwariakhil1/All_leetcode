@@ -1,0 +1,20 @@
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        nums.sort()
+        size=len(nums)
+        if(nums[0]!=0):
+            return 0
+        else:
+            f=nums[0]
+            count=0
+            for i in range(0,size):
+                if(f!=nums[i]):
+                    count=-1
+                    break
+                else:
+                    f=f+1
+                    count=count+1
+            if(count==-1):
+                return f;
+            else:
+                return (nums[size-1]+1)
