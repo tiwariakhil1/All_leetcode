@@ -1,1 +1,22 @@
-
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) 
+    {
+        int t=0;
+        unordered_map<int,int>dup;
+        
+        for(int i=0;i<nums.size();i++)
+        {
+            dup[nums[i]]++;
+        }
+      unordered_map<int,int>::iterator it;
+    for (it=dup.begin();it!=dup.end();it++)
+        {
+          cout<<it->first<<" , "<<it->second<<endl;
+        if(it->second>=2){t=1;break;}
+        
+        }
+       if(t==1)return true;
+        else return false;
+    }
+};
