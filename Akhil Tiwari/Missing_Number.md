@@ -1,5 +1,5 @@
 
-Method1:
+**Method1:**
 class Solution {
 public:
     int missingNumber(vector<int>& nums) 
@@ -16,10 +16,10 @@ public:
         if(tsum==0)return 0;
         else return tsum;
     }
-};
-
-Method2:
-
+};   
+                                       
+**************************************************************************************************************************        
+**Method2**
 class Solution {
 public:
     int missingNumber(vector<int>& nums) 
