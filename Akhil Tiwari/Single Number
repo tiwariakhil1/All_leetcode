@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) 
+    {
+          map<int,int> single;
+        int result=0;
+        for(int i=0;i<nums.size();i++)
+        {
+                single[nums[i]]++;
+        }
+        map<int,int>::iterator it;
+          for(it=single.begin();it!=single.end();it++)
+          {
+              if(it->second==1)
+              {
+                   result=it->first;
+                  break;
+              }
+          }
+        return  result;
+    }
+
+};
