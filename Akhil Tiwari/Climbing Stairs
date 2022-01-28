@@ -1,0 +1,12 @@
+
+class Solution 
+{
+    public:
+        int climbStairs(int n) 
+        {
+          int x=1,y=2,r;
+            if(n==1) return x;
+            else if(n==2) return y;
+            else{for(int i=3;i<=n;i++){r=x+y;x=y;y=r;}return r;}            
+        }
+};
