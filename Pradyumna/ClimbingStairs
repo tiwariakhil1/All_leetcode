@@ -1,6 +1,7 @@
 ************************
 METHOD_1
 ************************
+#Uses the concept of arranging toys in a row where pairs of atmost 2 toys are present
 
 class Solution:
     def fact(self, n):
