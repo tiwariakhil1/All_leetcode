@@ -1,0 +1,44 @@
+method1:
+class Solution {
+     int binary(int n1)
+    {
+        int i=0;
+        while(n1>0) 
+        {
+            if(n1%2==1)i++;
+            n1=n1/2;
+        }
+        return i;
+    }
+public:
+   
+    vector<int> countBits(int n) 
+    {
+        vector<int> v;
+             for(int j=0;j<=n;j++)
+             {
+                 int r=binary(j);
+                 v.push_back(r);
+             }
+        return v;
+    }
+};
+
+******************************************************************************************************************************
+method2:
+class Solution {
+public:
+    vector<int> countBits(int n) 
+    {
+       vector<int>r;
+       r.push_back(0);
+        for(int i=1;i<=n;i++)
+        {
+            auto pos=r.begin()+i;
+            if(i%2==0)r.insert(pos,r[i/2]);
+            else r.insert(pos,r[i-1]+1);
+        }
+        return r;
+        
+    }
+};
