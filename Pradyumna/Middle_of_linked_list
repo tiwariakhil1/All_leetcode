@@ -1,0 +1,9 @@
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if head == None or head.next == None:
+            return head
+        rabbit, turtle = head, head
+        while(rabbit and rabbit.next):
+            turtle = turtle.next
+            rabbit = rabbit.next.next
+        return turtle
