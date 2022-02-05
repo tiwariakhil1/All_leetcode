@@ -1,0 +1,44 @@
+# Method 1:
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        int n= nums.size();
+        int c=1;
+        sort(nums.begin(),nums.end());
+        for(int i=0;i<n-1;i++)
+        {
+            if(nums[i]==nums[i+1])
+            {
+                c++;
+            }
+        }    
+        if(c>1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+            
+    }
+        
+};
+
+# Shorter Version of method 1:
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+     int l=nums.size(),c=0;
+        sort(nums.begin(),nums.end());
+        for(int i=0;i<l-1;i++)
+        {
+            if(nums[i]==nums[i+1])
+               return true;
+        }
+            return false;
+        
+}
+};
