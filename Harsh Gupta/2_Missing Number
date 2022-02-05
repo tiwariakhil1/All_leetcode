@@ -37,3 +37,30 @@ public:
       return a^b;
     }
 };
+
+# Method 3:
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int s=nums.size(),l,i;
+        sort(nums.begin(),nums.end()); // sort in non-decreasing order
+            for(i=0;i<s-1;i++)
+            {
+                if(nums[i+1]-nums[i]==1)
+                 continue;
+                else
+                {
+                    l=(nums[i]+nums[i+1])/2; // calculate mid value
+                    break;
+                }
+            }
+        if (nums[0]!=0)
+            return 0;
+        else if(i==(s-1))
+            return s;
+        else 
+            return l; 
+        
+    }
+};
