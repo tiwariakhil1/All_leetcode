@@ -1,0 +1,39 @@
+# Method 1:
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+      int n=nums.size(),i,T_sum=0,A_sum=0;
+        // Total sum of 'n' numbers
+        for(i=1;i<=n;i++)
+        {
+            T_sum=T_sum+i;
+        }
+        // sum of array elements
+        for(i=0;i<n;i++)
+        {
+            A_sum=A_sum+nums[i];
+        }
+        return T_sum-A_sum;
+    }
+};
+
+# Method 2:
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+      int n=nums.size(),i,a=1,b=0;
+        // Xor natural numbers upto n.
+        for(i=2;i<=n;i++)
+        {
+            a=a^i;
+        }
+     // XOR array elements
+        for(i=0;i<n;i++)
+        {
+            b=b^nums[i];
+        }
+      return a^b;
+    }
+};
