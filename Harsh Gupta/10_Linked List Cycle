@@ -1,0 +1,39 @@
+# Method 1:
+
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+     ListNode *f=head;
+     ListNode *s=head;
+     while(f!=NULL && s!=NULL && f->next!=NULL)
+     {
+         f=f->next->next;
+         s=s->next;
+         if(f==s)
+             return true;
+         
+     }
+        return false;
+    }
+};
+
+
+# Method 2: Only change of one condition in while loop.
+
+
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+     ListNode *f=head;
+     ListNode *s=head;
+     while(f!=NULL  && f->next!=NULL)
+     {
+         f=f->next->next;
+         s=s->next;
+         if(f==s)
+             return true;
+         
+     }
+        return false;
+    }
+};
