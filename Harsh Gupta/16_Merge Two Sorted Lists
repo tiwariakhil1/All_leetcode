@@ -1,0 +1,133 @@
+# Method 1: It is like merge part of merge sort.
+
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+       ListNode* p1=list1;
+       ListNode* p2=list2;
+       ListNode* p3=NULL, * p4=NULL;
+        while(p1!=NULL && p2!=NULL)
+        {
+            struct ListNode* temp = (struct ListNode*)malloc(sizeof(struct ListNode)); 
+            temp->next=NULL;
+            if(p3==NULL)
+            {
+                p3=temp;
+            }
+            else
+                p4->next=temp;
+            if(p1->val <= p2->val)
+            {
+                temp->val=p1->val;
+                p1=p1->next;
+                p4=temp;
+            }
+            else
+            {
+                temp->val=p2->val;
+                p2=p2->next;
+                p4=temp;
+            }
+        }
+         if(p1==NULL)
+        {
+            while(p2!=NULL)
+            {
+            struct ListNode* temp = (struct ListNode*)malloc(sizeof(struct ListNode)); 
+            temp->next=NULL;
+                if(p3==NULL)
+                p3=temp;
+            else
+                p4->next=temp;
+            temp->val=p2->val;
+                p2=p2->next;
+                p4=temp;
+            }  
+        }
+         if(p2==NULL)
+        {
+            while(p1!=NULL)
+            {
+            struct ListNode* temp = (struct ListNode*)malloc(sizeof(struct ListNode)); 
+            temp->next=NULL;
+            if(p3==NULL)
+                p3=temp;
+            else
+                p4->next=temp;
+            temp->val=p1->val;
+                p1=p1->next;
+                p4=temp;
+            }  
+        }
+       return p3; 
+    }
+};
+
+
+# Method 2: Improved version of method 1.
+
+
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+       ListNode* p1=list1;
+       ListNode* p2=list2;
+       ListNode* p3=NULL, * p4=NULL;
+        if(p1==NULL && p2==NULL)
+             return p1;
+        if(p1==NULL && p2!=NULL)
+             return p2;
+        if(p1!=NULL && p2==NULL)
+             return p1;
+        while(p1!=NULL && p2!=NULL)
+        {
+            struct ListNode* temp = (struct ListNode*)malloc(sizeof(struct ListNode)); 
+            temp->next=NULL;
+            if(p3==NULL)
+                p3=temp;
+            else
+                p4->next=temp;
+            if(p1->val <= p2->val)
+            {
+                temp->val=p1->val;
+                p1=p1->next;
+                p4=temp;
+            }
+            else
+            {
+                temp->val=p2->val;
+                p2=p2->next;
+                p4=temp;
+            }
+        }
+         if(p1==NULL)
+             p4->next=p2;
+
+         else
+             p4->next=p1;
+        
+       return p3; 
+    }
+};
+
+
+# Method 3: Using Recursion
+
+
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        if(list1==NULL) return list2;
+        if(list2==NULL) return list1;
+        
+        if(list1->val <= list2->val)
+        {
+           list1->next=mergeTwoLists(list1->next,list2);
+            return list1;
+        }
+        
+        list2->next =mergeTwoLists(list1,list2->next);
+       return list2; 
+    }
+};
+
