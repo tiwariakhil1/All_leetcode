@@ -1,1 +1,36 @@
-# This code usesthe
+# This problem forms basically a Fibonaci series.
+# Method 1:
+
+class Solution {
+public:
+    int climbStairs(int n) {
+   int z[n+1];
+        z[0]=1;
+        z[1]=1;
+        for(int i=2;i<(n+1);i++)
+            z[i]=z[i-1]+z[i-2];  // Like we do in fibonaci series
+        return z[n];
+    }
+};
+
+# Method 2: Using recursion.
+
+class Solution {
+public:
+    int climbStairs(int n) {
+        vector<int> t(n+1,-1);
+        int result;
+        result = csh(n,t); 
+        return result;
+    }
+    int csh(int n, vector<int>&t)
+    {
+        if(n<=1)
+            return 1;
+        if(t[n]!=-1)
+            return t[n];
+        return t[n]=csh(n-1,t)+csh(n-2,t);
+    }
+};
+
+
