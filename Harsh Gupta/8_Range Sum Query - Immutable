@@ -1,0 +1,43 @@
+# Method 1: Simple method , but not optimal.
+
+class NumArray {
+public:
+    vector<int> a;
+    NumArray(vector<int>& nums) {
+      for(int i=0;i<nums.size();i++)
+          a.push_back(nums[i]);
+    }
+    
+    int sumRange(int left, int right) {
+        int sum=0;
+        for(int i=left;i<=right;i++)
+        {
+            sum+=a[i];
+        }
+        return sum;
+    }
+};
+
+
+# Method 2: Using the concept of prefix sum.
+
+class NumArray {
+public:
+    vector<int> prefixSum;
+    NumArray(vector<int>& nums) {
+        for(int i=0;i<nums.size();i++){
+            prefixSum.push_back(nums[i]);
+            if(i>0)
+                prefixSum[i]+=prefixSum[i-1];
+        }//end for 
+    }
+    
+    int sumRange(int left, int right) {
+        int sum=prefixSum[right];
+        if(left>0)
+            sum-=prefixSum[left-1];
+        return sum;
+    }
+};
+
+
