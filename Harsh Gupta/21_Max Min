@@ -1,0 +1,124 @@
+# Method 1  (2n comparisons)
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution
+{
+   public:
+    int findSum(int A[], int N)
+    {
+    long int i,mini=A[0],maxi=A[0];
+    for(i=0;i<N;i++)
+    {
+        if(A[i]<mini)
+            mini=A[i];
+        if(A[i]>maxi)
+            maxi=A[i];
+    }
+    i=mini+maxi;
+    return i;
+    }
+
+};
+
+int main()
+{
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int n;
+	    cin>>n;
+	    int arr[n];
+	    for(int i=0;i<n;i++)
+	      cin>>arr[i];
+	    Solution ob;  
+	    int ans=ob.findSum(arr, n);
+	    cout<<ans;
+	    cout<<"\n";
+	}
+	return 0;
+}
+
+
+
+# Efficient Method (3n/2 comparisons only)
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution
+{
+   public:
+    int findSum(int A[], int N)
+    {
+        long int mini,maxi,i=0;
+    	if(N%2==0)
+    	{
+    	   if(A[i]<A[i+1])
+            {
+    	   mini=A[0];
+    	   maxi=A[1];
+            }
+            else
+            {
+                maxi=A[0];
+                mini=A[1];
+            }
+    	   i=2;
+    	}
+    	else
+    	{
+    	  mini=A[0];
+    	  maxi=A[0];
+    	  i=1;
+    	}
+    	while(i<N-1)
+    	{
+    	    if(A[i+1]>A[i])
+    	    {
+    	        if(A[i+1]>maxi)
+    	        maxi=A[i+1];
+    	        
+    	        if(A[i]<mini)
+    	        mini=A[i];
+    	
+    	    }
+    	    else
+    	    {
+    	       if(A[i]>maxi)
+    	        maxi=A[i];
+    	        
+    	       if(A[i+1]<mini)
+    	        mini=A[i+1]; 
+    	    }
+    	    i+=2;
+    	}
+    	return mini+maxi;
+    }
+
+};
+
+int main()
+{
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int n;
+	    cin>>n;
+	    int arr[n];
+	    for(int i=0;i<n;i++)
+	      cin>>arr[i];
+	    Solution ob;  
+	    int ans=ob.findSum(arr, n);
+	    cout<<ans;
+	    cout<<"\n";
+	}
+	return 0;
+}
+
+
